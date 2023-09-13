@@ -1,0 +1,13 @@
+#### pip install -r requirements.txt ####
+### Other Options ###
+## docopt == 0.6.1             # Version Matching. Must be version 0.6.1
+## keyring >= 4.1.1            # Minimum version 4.1.1
+## coverage != 3.5             # Version Exclusion. Anything except version 3.5
+## Mopidy-Dirble ~= 1.1        # Compatible release. Same as >= 1.1, == 1.*
+## package >= 1.0, <=2.0       # Between ver 1.0 and 2.0
+
+## Basics
+NumPy
+pandas
+matplotlib
+scipy
