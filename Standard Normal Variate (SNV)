@@ -1,0 +1,23 @@
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
+# Load CSV file
+data = pd.read_csv('/kaggle/input/blood-malaria/blood2hinfected532nm5pp.csv')
+
+# Extract data from DataFrame
+spectra = data.iloc[:, 1:]
+
+# Step 1: Mean Centering
+mean_values = np.mean(spectra, axis=1)
+mean_centered_spectra = spectra.sub(mean_values, axis=0)
+
+# Step 2: Scaling to Standard Deviation (SNV) --> contains SNV-normalized Raman spectra
+scaler = StandardScaler()
+snv_normalized_spectra = scaler.fit_transform(mean_centered_spectra)
+
+# To put normalized data back into a DataFrame
+normalized_data = pd.DataFrame(snv_normalized_spectra, columns=data.columns[1:])
+
+# Save data to new CSV file
+normalized_data.to_csv('snv_normalized_data.csv', index=False)
